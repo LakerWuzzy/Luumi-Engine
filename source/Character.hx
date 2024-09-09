@@ -97,6 +97,12 @@ class Character extends FlxSprite
 
 			default:
 				var characterPath:String = 'characters/' + curCharacter + '.json';
+				
+				#if desktop
+				var path:String = Paths.image(characterPath);
+				if (!FileSystem.exists(path)) {
+					path = Paths.image(characterPath);
+				}
 
 				if (!FileSystem.exists(path))
 				#else
