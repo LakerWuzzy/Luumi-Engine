@@ -104,27 +104,13 @@ class Character extends FlxSprite
 					path = Paths.image('characters/' + DEFAULT_CHARACTER + '.json');
 				}
 
-				#if desktop
 				var rawJson = File.getContent(path);
-				#end
-
+				
 				var json:CharacterFile = cast Json.parse(rawJson);
 				var spriteType = "sparrow";
 				//sparrow
 				//packer
 				//texture
-				#if desktop
-				var modTxtToFind:String = Paths.modsTxt(json.image);
-				var txtToFind:String = Paths.getPath('images/' + json.image + '.txt', TEXT);
-				
-				//var modTextureToFind:String = Paths.modFolders("images/"+json.image);
-				//var textureToFind:String = Paths.getPath('images/' + json.image, new AssetType();
-				
-				if (Assets.exists(Paths.getPath('images/' + json.image + '.txt', TEXT)))
-				#end
-				{
-					spriteType = "packer";
-				}
 				
 				#if desktop
 				var animToFind:String = Paths.getPath('images/' + json.image + '/Animation.json', TEXT);
