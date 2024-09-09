@@ -36,7 +36,7 @@ class LoadingState extends MusicBeatState
 	
 	override function create()
 	{
-		var loadingrandom:FlxSprite = new FlxSprite().loadGraphic(Paths.image('loading/Loa-' + FlxG.random.int(1, 9)));
+		var loadingrandom:FlxSprite = new FlxSprite().loadGraphic(Paths.image('loading/Loa-' + FlxG.random.int(1, 10)));
 		loadingrandom.scrollFactor.set(0, 0);
 		loadingrandom.updateHitbox();
 		loadingrandom.antialiasing = false;
