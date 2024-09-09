@@ -7,6 +7,7 @@ import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxTimer;
+import flixel.math.FlxMath;
 
 import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
@@ -44,7 +45,7 @@ class LoadingState extends MusicBeatState
 
 		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffff16d2);
 		loadBar.screenCenter(X);
-		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
+		loadingrandom.antialiasing = false;
 		add(loadBar);
 		
 		initSongsManifest().onComplete
