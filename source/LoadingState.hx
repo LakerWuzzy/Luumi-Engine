@@ -22,10 +22,10 @@ class LoadingState extends MusicBeatState
 	var target:FlxState;
 	var stopMusic = false;
 	var callbacks:MultiCallback;
+	var targetShit:Float = 0;
 	
-	var logo:FlxSprite;
-	var gfDance:FlxSprite;
-	var danceLeft = false;
+	var funkay:FlxSprite;
+	var loadBar:FlxSprite;
 	
 	function new(target:FlxState, stopMusic:Bool)
 	{
@@ -36,22 +36,16 @@ class LoadingState extends MusicBeatState
 	
 	override function create()
 	{
-		logo = new FlxSprite(-150, -100);
-		logo.frames = Paths.getSparrowAtlas('logoBumpin');
-		logo.antialiasing = true;
-		logo.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logo.animation.play('bump');
-		logo.updateHitbox();
-		// logoBl.screenCenter();
-		// logoBl.color = FlxColor.BLACK;
+		var loadingrandom:FlxSprite = new FlxSprite().loadGraphic(Paths.image('loading/Loa-' + FlxG.random.int(1, 9)));
+		loadingrandom.scrollFactor.set(0, 0);
+		loadingrandom.updateHitbox();
+		loadingrandom.antialiasing = false;
+		add(loadingrandom);
 
-		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
-		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
-		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-		gfDance.antialiasing = true;
-		add(gfDance);
-		add(logo);
+		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffff16d2);
+		loadBar.screenCenter(X);
+		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
+		add(loadBar);
 		
 		initSongsManifest().onComplete
 		(
@@ -104,19 +98,6 @@ class LoadingState extends MusicBeatState
 		}
 	}
 	
-	override function beatHit()
-	{
-		super.beatHit();
-		
-		logo.animation.play('bump');
-		danceLeft = !danceLeft;
-		
-		if (danceLeft)
-			gfDance.animation.play('danceRight');
-		else
-			gfDance.animation.play('danceLeft');
-	}
-	
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -124,6 +105,11 @@ class LoadingState extends MusicBeatState
 		if (FlxG.keys.justPressed.SPACE)
 			trace('fired: ' + callbacks.getFired() + " unfired:" + callbacks.getUnfired());
 		#end
+		
+		if(callbacks != null) {
+			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
+			loadBar.scale.x += 0.5 * (targetShit - loadBar.scale.x);
+		}
 	}
 	
 	function onLoad()
@@ -152,21 +138,18 @@ class LoadingState extends MusicBeatState
 	static function getNextState(target:FlxState, stopMusic = false):FlxState
 	{
 		Paths.setCurrentLevel("week" + PlayState.storyWeek);
-		#if NO_PRELOAD_ALL
 		var loaded = isSoundLoaded(getSongPath())
 			&& (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()))
 			&& isLibraryLoaded("shared");
 		
 		if (!loaded)
 			return new LoadingState(target, stopMusic);
-		#end
 		if (stopMusic && FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 		
 		return target;
 	}
 	
-	#if NO_PRELOAD_ALL
 	static function isSoundLoaded(path:String):Bool
 	{
 		return Assets.cache.hasSound(path);
@@ -176,7 +159,6 @@ class LoadingState extends MusicBeatState
 	{
 		return Assets.getLibrary(library) != null;
 	}
-	#end
 	
 	override function destroy()
 	{
