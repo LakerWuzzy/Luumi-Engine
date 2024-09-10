@@ -354,8 +354,8 @@ class PlayState extends MusicBeatState
 		{
 			case 'HouseWuz':
 				{
-						defaultCamZoom = 0.9;
-						curStage = 'stage';
+						defaultCamZoom = 1;
+						curStage = 'HouseWuz';
 						var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('stages/Tage'));
 						bg.scale.set(2.25, 2.25);
 		                bg.antialiasing = true;
