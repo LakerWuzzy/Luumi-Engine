@@ -289,6 +289,14 @@ class Character extends FlxSprite
 						playAnim('danceLeft');
 				default:
 					playAnim('idle');
+
+                                case 'LuumiRetake':
+					danced = !danced;
+
+					if (danced)
+						playAnim('danceRight');
+					else
+						playAnim('danceLeft');
 			}
 		}
 	}
