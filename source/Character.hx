@@ -138,7 +138,7 @@ class Character extends FlxSprite
 				addOffset('singUP');
 				addOffset('singRIGHT');
 				addOffset('singLEFT');
-				addOffset('singDOWN");
+				addOffset('singDOWN');
 				
 				playAnim('danceRight');
 				
@@ -156,7 +156,7 @@ class Character extends FlxSprite
 				addOffset('singUP');
 				addOffset('singRIGHT');
 				addOffset('singLEFT');
-				addOffset('singDOWN");
+				addOffset('singDOWN');
 				
 				playAnim('idle');
 				
