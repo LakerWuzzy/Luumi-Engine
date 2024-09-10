@@ -497,13 +497,6 @@ class PlayState extends MusicBeatState
 				dad.y = 135;
 		}
 
-
-				boyfriend.x += 200;
-				boyfriend.y += 220;
-				gf.x += 180;
-				gf.y += 300;
-		}
-
 		add(gf);
 
 		// Shitty layering but whatev it works LOL
