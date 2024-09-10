@@ -488,14 +488,6 @@ class PlayState extends MusicBeatState
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
-			case 'limo':
-				boyfriend.y -= 220;
-				boyfriend.x += 260;
-				if(FlxG.save.data.distractions){
-					resetFastCar();
-					add(fastCar);
-				}
-
 			case 'HouseWuz':
 				boyfriend.x = 925;
 				boyfriend.y = 125;
@@ -503,7 +495,7 @@ class PlayState extends MusicBeatState
 				gf.y = 125;
 				dad.x = 175;
 				dad.y = 135;
-				}
+		}
 
 
 				boyfriend.x += 200;
