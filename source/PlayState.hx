@@ -491,7 +491,7 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'HouseWuz':
-				boyfriend.x -= 925;
+				boyfriend.x = 795;
 				boyfriend.y = 125;
 				gf.x = 400;
 				gf.y = 125;
