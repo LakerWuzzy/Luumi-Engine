@@ -441,6 +441,8 @@ class PlayState extends MusicBeatState
 		{
 			case 'gf-car':
 				gfVersion = 'gf-car';
+			case 'nada':
+				gfVersion = 'nada';
 			case 'gf-christmas':
 				gfVersion = 'gf-christmas';
 			case 'gf-pixel':
@@ -489,12 +491,14 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'HouseWuz':
-				boyfriend.x = 925;
+				boyfriend.x -= 925;
 				boyfriend.y = 125;
 				gf.x = 400;
 				gf.y = 125;
-				dad.x = 175;
-				dad.y = 135;
+				dad.x -= 175;
+				dad.y = 125;
+
+				gf.alpha = 0;
 		}
 
 		add(gf);
