@@ -131,6 +131,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'Down0', 24, false);
 				animation.addByPrefix('danceLeft', 'Idle2', 24, false);
 				animation.addByPrefix('danceRight', 'Idle1', 24, false);
+				scale.set(1.35, 1.35);
 				
 				addOffset('danceLeft');
 				addOffset('danceRight');
