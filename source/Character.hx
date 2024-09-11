@@ -160,6 +160,8 @@ class Character extends FlxSprite
 				addOffset('singDOWN');
 				
 				playAnim('idle');
+
+				flipX = true;
 				
 				case 'nada':
 				tex = Paths.getSparrowAtlas('characters/nada');
