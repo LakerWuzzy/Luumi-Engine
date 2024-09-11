@@ -3562,7 +3562,7 @@
     ],
     "player2": "LuumiRetake",
     "song": "girl",
-    "needsVoices": true,
+    "needsVoices":true,
     "stage": "HouseWuz",
     "validScore": true,
     "bpm": 160,
