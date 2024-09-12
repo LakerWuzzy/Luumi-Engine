@@ -497,8 +497,6 @@ class PlayState extends MusicBeatState
 				gf.y = 125;
 				dad.x -= 175;
 				dad.y = 125;
-
-				gf.alpha = 0;
 		}
 
 		add(gf);
